@@ -1,18 +1,31 @@
-<div align="center">  
+<p align="center">
+  <a href="http://ant.design">
+    <img width="200" src="https://spring.io/img/homepage/icon-spring-boot.svg">
+  </a>
+</p>
 
-<img src="https://spring.io/img/homepage/icon-spring-boot.svg" width=""/> 
-<br/>
-<br>
-<br>
+<h1 align="center">Spring Boot Aurora Seed</h1>
 
-![LICENSE](https://img.shields.io/github/license/Huyunxiu/spring-boot-aurora-seed.svg)
+<div align="center">
+:seedling:一个基于SpringBoot的RestfulApi项目的种子模板
+
+[![LICENSE](https://img.shields.io/github/license/Huyunxiu/spring-boot-aurora-seed.svg)](/LICENSE)
 
 </div>
-<br>
 
-> `spring-boot-aurora-seed`：:seedling:一个基于SpringBoot的RestfulApi项目的种子模板
+## :sparkles:  特性
 
-## 项目结构
+## :page_facing_up:  技术选型
+
+- [Spring Boot](https://spring.io/projects/spring-boot):基础开发框架
+- [Mybatis](http://www.mybatis.org/mybatis-3/zh/index.html)：数据库ORM框架
+- [Mybatis Plus](https://mybatis.plus/)：Mybatis扩展，简化Mybatis的开发
+- [Druid连接池](https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter/)：数据库连接池
+- [Swagger](https://swagger.io/)：最好的API文档工具，基于OpenApi规范
+- [Commons Lang3](https://commons.apache.org/proper/commons-lang/)：必备工具包之commons-lang3，可以看情况和guava混用
+- [Guava](https://github.com/google/guava)：必备工具包之guava，可以看情况和commons-lang3混用
+
+## :memo:  项目结构
 ```bash
 .
 ├── LICENSE                         # 许可证
