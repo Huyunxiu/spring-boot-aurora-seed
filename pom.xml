@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.huyunxiu</groupId>
     <artifactId>spring-boot-aurora-seed</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>spring-boot-aurora-seed</name>
     <description>A seed project for Spring Boot</description>
 

@@ -14,6 +14,27 @@
 
 </div>
 
+## :package: 快速开始
+1. `git clone git@github.com:Huyunxiu/spring-boot-aurora-seed.git --depth=1`
+2. 将`resources`下的`init.sql`导入数据库
+3. 运行`CodeGenerator.main()`方法并且输入对应参数，生成模板代码
+    ```bash
+    请输入请输入开发人员名称：
+    huyunxiu01@gmail.com
+    请输入表名，多个英文逗号分割：
+    region
+    请输入父包名，例如com.github.huyunxiu.seed：
+    com.github.huyunxiu.seed
+    请输入数据库URL，例如jdbc:mysql://localhost:3306/test：
+    jdbc:mysql://localhost:3306/test
+    请输入数据库用户名：
+    root
+    请输入数据库密码：
+    password
+    ```
+4. 在`resources`下新建`application-dev.properties`文件并且写入数据库配置
+5. 启动项目，打开`http://localhost:8080/swagger-ui.html`
+
 ## :sparkles: 特性
 
 - 快速脚手架，从命令行创建Controller, Service, ServiceImpl, Entity, Mapper, MapperXML等模板，避免重复劳动
@@ -60,3 +81,6 @@
     │       └── templates                           # 模板文件夹，目前用来放置代码生成模板
     └── test                        # 测试目录
 ```
+
+## :copyright: LICENSE
+许可证使用`MIT`，Copyright (c) 2019 重重重重重楼(AllenHu)。欢迎大家的Issue和PR！

@@ -19,7 +19,7 @@ public class BasePaginationParams {
 	@ApiModelProperty(value = "页码", example = "1")
 	private Integer pageNumber = 1;
 
-	@ApiModelProperty(value = "页码", example = "10")
+	@ApiModelProperty(value = "每页显示数量", example = "10")
 	@Max(value = 100, message = "单页最多显示100条数据")
 	private Integer pageSize = 10;
 }
