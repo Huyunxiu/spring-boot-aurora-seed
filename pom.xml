@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.huyunxiu</groupId>
     <artifactId>spring-boot-aurora-seed</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>spring-boot-aurora-seed</name>
     <description>A seed project for Spring Boot</description>
 
@@ -117,6 +117,13 @@
             <version>2.9.2</version>
         </dependency>
 
+		<!--数据库迁移工具-->
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>3.6.3</version>
+		</dependency>
+
         <!--常用工具库-->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -142,6 +149,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.6.3</version>
+				<configuration>
+					<changeLogFile>src/main/resources/database/master.xml</changeLogFile>
+					<diffChangeLogFile>src/main/resources/database/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>url</url>
+					<username>username</username>
+					<password>password</password>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 </project>

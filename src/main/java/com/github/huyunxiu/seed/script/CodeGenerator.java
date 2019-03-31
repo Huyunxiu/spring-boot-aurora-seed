@@ -36,6 +36,9 @@ public class CodeGenerator {
 		String author = scanner("请输入开发人员名称");
 		String[] tableList = scanner("表名，多个英文逗号分割").split(",");
 		String parentPackage = scanner("父包名，例如com.github.huyunxiu.seed");
+		String dbUrl = scanner("数据库URL，例如jdbc:mysql://localhost:3306/user");
+		String dbUserName = scanner("数据库用户名");
+		String dbPassword = scanner("数据库密码");
 
 		String projectPath = System.getProperty("user.dir");
 
@@ -60,10 +63,10 @@ public class CodeGenerator {
 
 		// 数据源配置
 		DataSourceConfig datasource = new DataSourceConfig();
-		datasource.setUrl("jdbc:mysql://localhost:3306/user?useUnicode=true&useSSL=false&characterEncoding=utf8");
+		datasource.setUrl(dbUrl);
 		datasource.setDriverName("com.mysql.cj.jdbc.Driver");
-		datasource.setUsername("root");
-		datasource.setPassword("Hyx@19911009");
+		datasource.setUsername(dbUserName);
+		datasource.setPassword(dbPassword);
 		generator.setDataSource(datasource);
 
 		// 包配置
