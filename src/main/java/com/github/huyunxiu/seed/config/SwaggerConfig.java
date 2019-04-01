@@ -44,6 +44,7 @@ public class SwaggerConfig {
             .apis(RequestHandlerSelectors.basePackage("com.github.huyunxiu.seed.controller"))
             .paths(PathSelectors.any())
             .build()
+			.host("")
             .pathMapping("/");
     }
 }

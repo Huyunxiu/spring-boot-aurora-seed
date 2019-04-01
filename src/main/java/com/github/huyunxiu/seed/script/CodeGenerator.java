@@ -36,7 +36,7 @@ public class CodeGenerator {
 		String author = scanner("请输入开发人员名称");
 		String[] tableList = scanner("表名，多个英文逗号分割").split(",");
 		String parentPackage = scanner("父包名，例如com.github.huyunxiu.seed");
-		String dbUrl = scanner("数据库URL，例如jdbc:mysql://localhost:3306/user");
+		String dbUrl = scanner("数据库URL，例如jdbc:mysql://localhost:3306/test");
 		String dbUserName = scanner("数据库用户名");
 		String dbPassword = scanner("数据库密码");
 

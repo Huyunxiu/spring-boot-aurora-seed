@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.huyunxiu</groupId>
     <artifactId>spring-boot-aurora-seed</artifactId>
-    <version>1.0.0</version>
+    <version>1.2.0</version>
     <name>spring-boot-aurora-seed</name>
     <description>A seed project for Spring Boot</description>
 
@@ -156,7 +156,7 @@
 				<configuration>
 					<changeLogFile>src/main/resources/database/master.xml</changeLogFile>
 					<diffChangeLogFile>src/main/resources/database/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
-					<driver>com.mysql.jdbc.Driver</driver>
+					<driver>com.mysql.cj.jdbc.Driver</driver>
 					<url>url</url>
 					<username>username</username>
 					<password>password</password>

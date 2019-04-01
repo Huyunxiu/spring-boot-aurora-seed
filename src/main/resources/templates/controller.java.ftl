@@ -27,14 +27,14 @@ import javax.annotation.Resource;
  * @since ${date}
  */
 <#if swagger2>
-@Api(value = "/v1/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}<#else>${table.entityPath}</#if>", description = "${entity} feature")
+@Api(value = "/v1/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}s<#else>${table.entityPath}</#if>", description = "${entity} feature")
 </#if>
 <#if restControllerStyle>
 @RestController
 <#else>
 @Controller
 </#if>
-@RequestMapping("/v1/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}<#else>${table.entityPath}</#if>")
+@RequestMapping("/v1/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}s<#else>${table.entityPath}</#if>")
 <#if kotlin>
 class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
 <#else>
@@ -42,16 +42,17 @@ class ${table.controllerName}<#if superControllerClass??> : ${superControllerCla
 public class ${table.controllerName} extends ${superControllerClass} {
 <#else>
 public class ${table.controllerName} {
+
 </#if>
     @Resource
-    private ${table.serviceName} ${table.serviceImplName};
+    private ${table.serviceName} ${table.serviceName ? uncap_first};
 
     @PostMapping
     <#if swagger2>
     @ApiOperation(value = "Add ${controllerMappingHyphen}")
     </#if>
     public Result<${entity}> add(@RequestBody ${entity} record) {
-        ${table.serviceImplName}.save(record);
+        ${table.serviceName ? uncap_first}.save(record);
         return Result.success(record);
     }
 
@@ -60,7 +61,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "Delete ${controllerMappingHyphen}")
     </#if>
     public Result delete(@PathVariable Integer id) {
-        ${table.serviceImplName}.removeById(id);
+        ${table.serviceName ? uncap_first}.removeById(id);
         return Result.success();
     }
 
@@ -70,7 +71,7 @@ public class ${table.controllerName} {
     </#if>
     public Result<${entity}> update(@PathVariable Integer id, @RequestBody ${entity} record) {
         record.setId(id);
-        ${table.serviceImplName}.updateById(record);
+        ${table.serviceName ? uncap_first}.updateById(record);
         return Result.success(record);
     }
 
@@ -79,7 +80,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "Get ${controllerMappingHyphen}")
     </#if>
     public Result<${entity}> get(@PathVariable Integer id) {
-        ${entity} record = ${table.serviceImplName}.getById(id);
+        ${entity} record = ${table.serviceName ? uncap_first}.getById(id);
         return Result.success(record);
     }
 
@@ -87,9 +88,9 @@ public class ${table.controllerName} {
     <#if swagger2>
     @ApiOperation(value = "List ${controllerMappingHyphen}")
     </#if>
-    public Result<IPage> list(@Validated BasePaginationParams params) {
+    public Result<IPage<${entity}>> list(@Validated BasePaginationParams params) {
         Page<${entity}> page = new Page<>(params.getPageNumber(), params.getPageSize());
-        IPage<${entity}> pageInfo = ${table.serviceImplName}.page(page);
+        IPage<${entity}> pageInfo = ${table.serviceName ? uncap_first}.page(page);
         return Result.success(pageInfo);
     }
 }
