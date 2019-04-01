@@ -35,6 +35,14 @@
 4. 在`resources`下新建`application-dev.properties`文件并且写入数据库配置
 5. 启动项目，打开`http://localhost:8080/swagger-ui.html`
 
+## :hammer_and_wrench: 使用Docker进行部署
+```bash
+构建镜像
+docker build -t aurora-seed
+运行镜像，如果是测试环境SPRING_PROFILES_ACTIVE=test,如果是正式环境SPRING_PROFILES_ACTIVE=prod
+docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod aurora-seed
+```
+
 ## :sparkles: 特性
 
 - 快速脚手架，从命令行创建Controller, Service, ServiceImpl, Entity, Mapper, MapperXML等模板，避免重复劳动
