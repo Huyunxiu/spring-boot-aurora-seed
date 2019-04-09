@@ -40,7 +40,7 @@
 构建镜像
 docker build -t aurora-seed
 运行镜像，如果是测试环境SPRING_PROFILES_ACTIVE=test,如果是正式环境SPRING_PROFILES_ACTIVE=prod
-docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod aurora-seed
+docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log:/var/log aurora-seed
 ```
 
 ## :sparkles: 特性
