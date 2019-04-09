@@ -50,6 +50,7 @@ docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod aurora-seed
 - 集成了MybatisPlus，更方便快捷的实现实现单表业务零SQL
 - 集成了SwaggerApi文档，从此开发接口两不误
 - 集成了数据库迁移工具Liquibase，将数据库也纳入版本管理，不再混乱
+- 集成了Logback日志系统，开箱即用
 
 ## :page_facing_up: 技术选型
 

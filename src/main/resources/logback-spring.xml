@@ -1,0 +1,55 @@
+<!-- 日志级别从低到高分为TRACE < DEBUG < INFO < WARN < ERROR < FATAL，如果设置为WARN，则低于WARN的信息都不会输出 -->
+<!-- scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true -->
+<!-- scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 -->
+<!-- debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+<!-- 属性文件:在properties文件中找到对应的配置项 -->
+<springProperty scope="context" name="APP_NAME"  source="spring.application.name"/>
+<springProperty scope="context" name="LOGGING_PATH" source="logging.path"/>
+<springProperty scope="context" name="LOGGING_OUT_LEVEL" source="logging.output.level"/>
+<springProperty scope="context" name="LOGGING_FILE_MAX_HISTORY" source="logging.file.max-history"/>
+
+	<!-- 默认的控制台日志输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--日志格式：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %yellow(%-5level) [%thread] %blue(%logger{50}) - %msg%n</Pattern>
+			<!-- 编码 -->
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<!--开发环境不将日志输出到文件-->
+	<springProfile name="!dev">
+		<appender name="APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<!-- 过滤器 -->
+			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+				<level>${logging.level}</level>
+			</filter>
+			<!-- 日志名称 -->
+			<file>${LOGGING_PATH:-/var/log}/${spring.application.name}.log</file>
+			<!-- 每天生成一个日志文件，保存指定天数的日志文件 -->
+			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+				<!--日志文件输出的文件名:按天回滚 -->
+				<FileNamePattern>${APP_NAME}.log.%d{yyyy-MM-dd}</FileNamePattern>
+				<!--日志文件保留天数-->
+				<MaxHistory>${LOGGING_FILE_MAX_HISTORY:-30}</MaxHistory>
+			</rollingPolicy>
+			<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<!--日志格式：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+				<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{50} - %msg%n</pattern>
+				<!-- 编码 -->
+				<charset>UTF-8</charset>
+			</encoder>
+		</appender>
+	</springProfile>
+
+	<root level="${LOGGING_OUT_LEVEL:-INFO}}">
+		<!--所有环境均输出终端日志-->
+		<appender-ref ref="STDOUT" />
+		<!--开发环境不将日志输出到文件-->
+		<springProfile name="!dev">
+			<appender-ref ref="APP" />
+		</springProfile>
+	</root>
+</configuration>
