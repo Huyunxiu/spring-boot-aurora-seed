@@ -119,9 +119,9 @@
 
 		<!--数据库迁移工具-->
 		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-			<version>3.6.3</version>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>5.2.4</version>
 		</dependency>
 
         <!--常用工具库-->
@@ -149,20 +149,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-			<plugin>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-maven-plugin</artifactId>
-				<version>3.6.3</version>
-				<configuration>
-					<changeLogFile>src/main/resources/database/master.xml</changeLogFile>
-					<diffChangeLogFile>src/main/resources/database/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
-					<driver>com.mysql.cj.jdbc.Driver</driver>
-					<url>url</url>
-					<username>username</username>
-					<password>password</password>
-					<verbose>true</verbose>
-				</configuration>
-			</plugin>
         </plugins>
     </build>
 </project>

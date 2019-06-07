@@ -49,7 +49,7 @@ docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log:/var
 - 开箱即用，集成了结果封装，结果生成，分页参数，日志打印，异常处理等日常必备功能
 - 集成了MybatisPlus，更方便快捷的实现实现单表业务零SQL
 - 集成了SwaggerApi文档，从此开发接口两不误
-- 集成了数据库迁移工具Liquibase，将数据库也纳入版本管理，不再混乱
+- 集成了数据库迁移工具Flyway，将数据库也纳入版本管理，不再混乱
 - 集成了Logback日志系统，开箱即用
 
 ## :page_facing_up: 技术选型
@@ -58,7 +58,7 @@ docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log:/var
 - [Mybatis](http://www.mybatis.org/mybatis-3/zh/index.html)：数据库ORM框架
 - [Mybatis Plus](https://mybatis.plus/)：Mybatis扩展，简化Mybatis的开发
 - [Druid连接池](https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter/)：数据库连接池
-- [Liquibase](http://www.liquibase.org/index.html)：企业级数据库迁移工具
+- [Flyway](https://flywaydb.org/)：数据库版本管理工具
 - [Swagger](https://swagger.io/)：最好的API文档工具，基于OpenApi规范
 - [Commons Lang3](https://commons.apache.org/proper/commons-lang/)：必备工具包之commons-lang3，可以看情况和guava混用
 - [Guava](https://github.com/google/guava)：必备工具包之guava，可以看情况和commons-lang3混用
