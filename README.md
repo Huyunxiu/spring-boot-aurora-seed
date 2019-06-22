@@ -14,7 +14,7 @@
 
 </div>
 
-## :package: 快速开始
+## 快速开始
 1. `git clone git@github.com:Huyunxiu/spring-boot-aurora-seed.git --depth=1`
 2. 将`resources`下的`init.sql`导入数据库
 3. 运行`CodeGenerator.main()`方法并且输入对应参数，生成模板代码
@@ -35,15 +35,15 @@
 4. 在`resources`下新建`application-dev.properties`文件并且写入数据库配置
 5. 启动项目，打开`http://localhost:8080/swagger-ui.html`
 
-## :hammer_and_wrench: 使用Docker进行部署
+## 部署
 ```bash
 构建镜像
 docker build -t aurora-seed
 运行镜像，如果是测试环境SPRING_PROFILES_ACTIVE=test,如果是正式环境SPRING_PROFILES_ACTIVE=prod
-docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log:/var/log aurora-seed
+docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log/aurora-seed/:/var/log aurora-seed
 ```
 
-## :sparkles: 特性
+## 特性
 
 - 快速脚手架，从命令行创建Controller, Service, ServiceImpl, Entity, Mapper, MapperXML等模板，避免重复劳动
 - 开箱即用，集成了结果封装，结果生成，分页参数，日志打印，异常处理等日常必备功能
@@ -52,7 +52,7 @@ docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log:/var
 - 集成了数据库迁移工具Flyway，将数据库也纳入版本管理，不再混乱
 - 集成了Logback日志系统，开箱即用
 
-## :page_facing_up: 技术选型
+## 技术选型
 
 - [Spring Boot](https://spring.io/projects/spring-boot):基础开发框架
 - [Mybatis](http://www.mybatis.org/mybatis-3/zh/index.html)：数据库ORM框架
@@ -63,7 +63,7 @@ docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log:/var
 - [Commons Lang3](https://commons.apache.org/proper/commons-lang/)：必备工具包之commons-lang3，可以看情况和guava混用
 - [Guava](https://github.com/google/guava)：必备工具包之guava，可以看情况和commons-lang3混用
 
-## :memo: 项目结构
+## 项目结构
 
 ```bash
 .
@@ -91,5 +91,5 @@ docker run -d --name aurora-seed -e SPRING_PROFILES_ACTIVE=prod -v /var/log:/var
     └── test                        # 测试目录
 ```
 
-## :copyright: LICENSE
+## LICENSE
 许可证使用`MIT`，Copyright (c) 2019 重重重重重楼(AllenHu)。欢迎大家的Issue和PR！
