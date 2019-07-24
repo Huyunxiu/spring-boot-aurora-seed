@@ -24,68 +24,51 @@ public class Result<T> {
 
     private T data;
 
-    public static Result success(ResultCode resultCode) {
-        return new Result()
-            .setCode(resultCode.getCode())
-            .setMsg(resultCode.getMessage());
-    }
+	public Result(int code, String msg) {
+		this.code = code;
+		this.msg = msg;
+	}
 
-    public static<T> Result<T> success(ResultCode resultCode, T data) {
-        return new Result()
-            .setCode(resultCode.getCode())
-            .setMsg(resultCode.getMessage())
-            .setData(data);
-    }
+	public Result(ResultCode resultCode) {
+		this.code = resultCode.getCode();
+		this.msg = resultCode.getMessage();
+	}
+
+	public Result(ResultCode resultCode, T data) {
+		this.code = resultCode.getCode();
+		this.msg = resultCode.getMessage();
+		this.data = data;
+	}
 
     public static Result success() {
-        return new Result()
-            .setCode(ResultCode.SUCCESS.getCode())
-            .setMsg(ResultCode.SUCCESS.getMessage());
+        return new Result(ResultCode.SUCCESS);
     }
 
     public static<T> Result<T> success(T data) {
-        return new Result()
-            .setCode(ResultCode.SUCCESS.getCode())
-            .setMsg(ResultCode.SUCCESS.getMessage())
-            .setData(data);
+		return new Result<>(ResultCode.SUCCESS, data);
     }
 
-    public static<T> Result<T> failure(ResultCode resultCode) {
-        return new Result()
-            .setCode(resultCode.getCode())
-            .setMsg(resultCode.getMessage());
-    }
+	public static<T> Result<T> failure(ResultCode resultCode) {
+		return new Result<>(resultCode);
+	}
 
-    public static<T> Result<T> failure(ResultCode resultCode, T data) {
-        return new Result()
-            .setCode(resultCode.getCode())
-            .setMsg(resultCode.getMessage())
-            .setData(data);
-    }
+	public static<T> Result<T> failure(ResultCode resultCode, T data) {
+		return new Result<>(resultCode, data);
+	}
 
-    public static<T> Result<T> failure(String errorMessage) {
-        return new Result()
-            .setCode(ResultCode.FAIL.getCode())
-            .setMsg(errorMessage);
-    }
+	public static<T> Result<T> failure(String errorMessage) {
+		return new Result<>(ResultCode.FAIL.getCode(), errorMessage);
+	}
 
-    public static<T> Result<T> failure(String errorMessage, T data) {
-        return new Result()
-            .setCode(ResultCode.FAIL.getCode())
-            .setMsg(errorMessage)
-            .setData(data);
-    }
+	public static<T> Result<T> failure(String errorMessage, T data) {
+		return new Result<>(ResultCode.FAIL.getCode(), errorMessage, data);
+	}
 
-    public static Result failure() {
-        return new Result()
-            .setCode(ResultCode.FAIL.getCode())
-            .setMsg(ResultCode.FAIL.getMessage());
-    }
+	public static Result failure() {
+		return new Result<>(ResultCode.FAIL);
+	}
 
-    public static<T> Result<T> failure(T data) {
-        return new Result()
-            .setCode(ResultCode.FAIL.getCode())
-            .setMsg(ResultCode.FAIL.getMessage())
-            .setData(data);
-    }
+	public static<T> Result<T> failure(T data) {
+		return new Result<>(ResultCode.FAIL, data);
+	}
 }
